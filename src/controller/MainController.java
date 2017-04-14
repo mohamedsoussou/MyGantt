@@ -20,6 +20,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import util.Strings;
 
 /**
  * FXML Controller class
@@ -72,8 +76,6 @@ public class MainController implements Initializable {
     private JFXDatePicker timePicker;
     @FXML
     private Button btnEnregistrer;
-    
-    
 
     private List<AffEquipement> affEquipements;
 
@@ -136,7 +138,29 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        initTables();
+        initAllButtons();
+    }
+
+    private void initAllButtons() {
+        initButton(Strings.BTN_ICON_ACTUALISERCASE, Strings.BTN_TOOLTIP_ACTUALISERCASE, btnActualiserCase);
+        initButton(Strings.BTN_ICON_ACTUALISERMACHINE, Strings.BTN_TOOLTIP_ACTUALISERMACHINE, btnActualiserMachine);
+        initButton(Strings.BTN_ICON_AFFICHGRAPH, Strings.BTN_TOOLTIP_AFFICHGRAPH, btnAffichGraph);
+        initButton(Strings.BTN_ICON_AJOUTERCASE, Strings.BTN_TOOLTIP_AJOUTERCASE, btnAjouterCase);
+        initButton(Strings.BTN_ICON_AJOUTERPRELEVEMENT, Strings.BTN_TOOLTIP_AJOUTERPRELEVEMENT, btnAjouterPrelevement);
+        initButton(Strings.BTN_ICON_ENREGISTRER, Strings.BTN_TOOLTIP_ENREGISTRER, btnEnregistrer);
+        initButton(Strings.BTN_ICON_GANTTCASE, Strings.BTN_TOOLTIP_GANTTCASE, btnGanttCase);
+        initButton(Strings.BTN_ICON_GANTTMACHINE, Strings.BTN_TOOLTIP_GANTTMACHINE, btnGanttMachine);
+        initButton(Strings.BTN_ICON_MODIFIERCASE, Strings.BTN_TOOLTIP_MODIFIERCASE, btnModifierCase);
+        initButton(Strings.BTN_ICON_SUPPRIMERCASE, Strings.BTN_TOOLTIP_SUPPRIMERCASE, btnSupprimerCase);
+    }
+
+    private void initButton(String icon, String toolTip, Button btn) {
+        btn = new Button();
+        btn.setTooltip(new Tooltip(toolTip));
+    }
+
+    private void initTables() {
         machineHelpper = new MachineHelpper(machineTable);
     }
 
