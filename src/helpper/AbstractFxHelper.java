@@ -7,6 +7,7 @@ package helpper;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.value.ObservableValue;
 
 
 import javafx.collections.FXCollections;
@@ -14,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 /**
  *

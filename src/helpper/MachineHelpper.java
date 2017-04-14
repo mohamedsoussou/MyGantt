@@ -10,10 +10,10 @@ public class MachineHelpper extends AbstractFxHelper<AffEquipement> {
     private static AbstractFxHelperItem[] titres;
 
     static {
-
         titres = new AbstractFxHelperItem[]{
             new AbstractFxHelperItem("ID", "id"),
-            new AbstractFxHelperItem("case", "numCase")
+            new AbstractFxHelperItem("Numero case", "numCasee"),
+            new AbstractFxHelperItem("Nom equipement", "nomEquipement")
         };
     }
 

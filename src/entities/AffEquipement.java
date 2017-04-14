@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import util.DateUtil;
 
 /**
  *
@@ -38,7 +39,22 @@ public class AffEquipement implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateFin;
 
-    
+    public String getNumCasee() {
+        return new SimpleStringProperty(getCasee() == null ? "" : getCasee().getNumCase() + "").get();
+    }
+
+    public String getNomEquipement() {
+        return new SimpleStringProperty(getEquipement() == null ? "" : getEquipement().getNom() + "").get();
+    }
+
+    public String getStrDateDeb() {
+        return new SimpleStringProperty(getDateDeb() == null ? "" : DateUtil.strDateDefaultPattern(getDateDeb()) + "").get();
+    }
+
+    public String getStrDateFin() {
+        return new SimpleStringProperty(getDateFin() == null ? "" : DateUtil.strDateDefaultPattern(getDateFin()) + "").get();
+    }
+
     public Long getId() {
         return id;
     }

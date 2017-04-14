@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 
+import dao.AffEquipementDao;
 import dao.CaseeDao;
 import dao.EquipementDao;
 import dao.NiveauDao;
 import dao.OperationDao;
 import dao.TrancheDao;
+import entities.AffEquipement;
 import entities.Casee;
 import entities.Equipement;
 import entities.Niveau;
@@ -30,7 +32,9 @@ public class GenerateDB {
 //        em.close();
 //        System.out.println("generating database .... ");
 
-//        EquipementDao equipementDao = new EquipementDao();
+        EquipementDao equipementDao = new EquipementDao();
+        CaseeDao caseeDao = new CaseeDao();
+        AffEquipementDao affEquipementDao = new AffEquipementDao();
 //        OperationDao operationDao = new OperationDao();
 //        NiveauDao ed = new NiveauDao();
 //
@@ -46,24 +50,15 @@ public class GenerateDB {
 //            e.setType(Integer.parseInt(elem[3]));
 //            ed.create(e);
 //        }
+
+        Equipement equipement = equipementDao.find(1l);
+        Casee casee = caseeDao.find(1l);
+        AffEquipement affEquipement = new AffEquipement();
         
+        affEquipement.setEquipement(equipement);
+        affEquipement.setCasee(casee);
         
-        
-        CaseeDao caseeDao = new CaseeDao();
-        TrancheDao trancheDao = new TrancheDao();
-        
-        for (int i = 1; i <= 8; i++) {
-            Tranche tranche = new Tranche();
-            tranche.setId(trancheDao.generateId("Tranche", "id"));
-            tranche.setNom("Tranche "+(i+1));
-            trancheDao.create(tranche);
-            for (int j = 20*(i-1)+1; j <= 20*i ; j++) {
-                Casee casee = new Casee();
-                casee.setNumCase(j);
-                casee.setTranche(tranche);
-                caseeDao.create(casee);
-            }
-        }
+        affEquipementDao.create(affEquipement);
 
     }
 
