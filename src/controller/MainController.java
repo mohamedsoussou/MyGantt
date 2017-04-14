@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.jfoenix.controls.JFXDatePicker;
 import dao.AffEquipementDao;
 import entities.AffEquipement;
 import helpper.MachineHelpper;
@@ -18,6 +19,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -56,6 +58,22 @@ public class MainController implements Initializable {
     private Button btnGanttMachine;
     @FXML
     private TableView<AffEquipement> machineTable = new TableView<>();
+    @FXML
+    private ComboBox<?> comboTranche;
+    @FXML
+    private ComboBox<?> comboCasee;
+    @FXML
+    private ComboBox<?> comboNivBut;
+    @FXML
+    private TextField textIndice;
+    @FXML
+    private JFXDatePicker datePicker;
+    @FXML
+    private JFXDatePicker timePicker;
+    @FXML
+    private Button btnEnregistrer;
+    
+    
 
     private List<AffEquipement> affEquipements;
 
