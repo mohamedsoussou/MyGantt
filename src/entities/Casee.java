@@ -11,7 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import java.util.*;
+import javafx.beans.property.SimpleStringProperty;
+import javax.persistence.FetchType;
+import util.DateUtil;
 
 /**
  *
@@ -26,12 +28,13 @@ public class Casee implements Serializable {
     private Long id;
     private int numCase;
     private int numOrdre;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Exploitation exploitation;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Niveau niveauPre;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Tranche tranche;
+
 
     public Long getId() {
         return id;
@@ -100,10 +103,10 @@ public class Casee implements Serializable {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
-        return numCase+"";
+        return numCase + "";
     }
 
 }

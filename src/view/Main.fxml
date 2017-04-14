@@ -24,7 +24,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@home-blue.png" />
+                        <Image url="@../ressources/images/home-blue.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -36,47 +36,47 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="643.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <Text layoutX="23.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des exploitations en cours" wrappingWidth="202.68292617797852" />
-                                    <Button fx:id="btnActualiserCase" layoutX="300.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickActualiserCase" text="Actualiser">
+                                    <Button fx:id="btnActualiserCase" layoutX="300.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickActualiserCase" text="$actualiserCase">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@Update.png" />
+                                                <Image url="@../ressources/images/Update.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="btnAjouterCase" layoutX="414.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickAjouterCase" text="Ajouter">
+                                    <Button fx:id="btnAjouterCase" layoutX="414.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickAjouterCase" text="$ajouterCase">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@add.png" />
+                                                <Image url="@../ressources/images/add.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="btnGanttCase" layoutX="741.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickGanttCase" text="Gantt">
+                                    <Button fx:id="btnGanttCase" layoutX="741.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickGanttCase" text="$ganttCase">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@gantt.png" />
+                                                <Image url="@../ressources/images/gantt.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="btnSupprimerCase" layoutX="621.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickSupprimerCase" text="Supprimer">
+                                    <Button fx:id="btnSupprimerCase" layoutX="621.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickSupprimerCase" text="$supprimerCase">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@suppression.png" />
+                                                <Image url="@../ressources/images/suppression.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="btnModifierCase" layoutX="514.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickModifierCase" text="Modifier">
+                                    <Button fx:id="btnModifierCase" layoutX="514.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickModifierCase" text="$modifierCase">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@modify.png" />
+                                                <Image url="@../ressources/images/modify.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -100,7 +100,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@produit.png" />
+                        <Image url="@../ressources/images/produit.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -122,16 +122,16 @@
                               <AnchorPane accessibleRole="NODE" minWidth="-Infinity" BorderPane.alignment="CENTER">
                                  <children>
                                     <Text layoutX="304.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Evolution du Stock" textAlignment="CENTER" wrappingWidth="202.68292617797852" />
-                                    <Button fx:id="btnAjouterPrelevement" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#onClickAjouterPrelevement" text=" Ajouter Prélèvement">
+                                    <Button fx:id="btnAjouterPrelevement" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onAction="#onClickAjouterPrelevement" text="$ajouterPrelevement">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@add.png" />
+                                                <Image url="@../ressources/images/add.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="btnAffichGraph" layoutX="684.0" layoutY="26.0" mnemonicParsing="false" onAction="#onClickBtnAffichGraph" prefHeight="28.0" prefWidth="136.0" text="Afficher les graphes" />
+                                    <Button fx:id="btnAffichGraph" layoutX="684.0" layoutY="26.0" mnemonicParsing="false" onAction="#onClickBtnAffichGraph" prefHeight="28.0" prefWidth="136.0" text="$affichGraph" />
                                     <ComboBox fx:id="comboQualite1" layoutX="196.0" layoutY="27.0" onAction="#onSelectComboQualite1" prefWidth="150.0" promptText="Qualité" />
                                     <ComboBox fx:id="comboQualite2" layoutX="357.0" layoutY="27.0" onAction="#onSelectComboQualite2" prefWidth="150.0" promptText="Qualité" />
                                     <ComboBox fx:id="comboQualite3" layoutX="524.0" layoutY="27.0" onAction="#onSelectComboQualite3" prefWidth="150.0" promptText="Qualité" />
@@ -147,7 +147,7 @@
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@camion.png" />
+                        <Image url="@../ressources/images/camion.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -159,20 +159,20 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="54.0" prefWidth="643.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <Text layoutX="23.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des affectations des machines" wrappingWidth="213.68292617797852" />
-                                    <Button fx:id="btnActualiserMachine" layoutX="628.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickBtnActualiserMachine" text="Actualiser">
+                                    <Button fx:id="btnActualiserMachine" layoutX="628.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickBtnActualiserMachine" text="$actualiserMachine">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@Update.png" />
+                                                <Image url="@../ressources/images/Update.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="btnGanttMachine" layoutX="741.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickBtnGanttMachine" text="Gantt">
+                                    <Button fx:id="btnGanttMachine" layoutX="741.0" layoutY="13.0" mnemonicParsing="false" onAction="#onClickBtnGanttMachine" text="$ganttMachine">
                                        <graphic>
                                           <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@gantt.png" />
+                                                <Image url="@../ressources/images/gantt.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
