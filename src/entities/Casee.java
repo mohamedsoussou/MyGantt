@@ -99,7 +99,7 @@ public class Casee implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
         return numCase+"";
