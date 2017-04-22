@@ -9,12 +9,16 @@ import com.jfoenix.controls.JFXDatePicker;
 import dao.AffEquipementDao;
 import entities.AffEquipement;
 import helpper.MachineHelpper;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -23,6 +27,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import util.Strings;
 
 /**
@@ -76,6 +83,16 @@ public class MainController implements Initializable {
     private JFXDatePicker timePicker;
     @FXML
     private Button btnEnregistrer;
+    @FXML
+    private ComboBox<?> comboQualite;
+    @FXML
+    private TextField txtQuantite;
+    @FXML
+    private JFXDatePicker datePickerStock;
+    @FXML
+    private JFXDatePicker timePickerStock;
+    @FXML
+    private Button btnEnregistrerStock;
 
     private List<AffEquipement> affEquipements;
 
@@ -88,7 +105,8 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void onClickAjouterCase(ActionEvent event) {
+    private void onClickAjouterCase(ActionEvent event) throws IOException {
+        showDialog(Strings.DIALOGUE_MESSAGE_TITLE);
     }
 
     @FXML
@@ -133,6 +151,10 @@ public class MainController implements Initializable {
     private void onClickBtnGanttMachine(ActionEvent event) {
     }
 
+    @FXML
+    private void onClickBtnEnregistrerStock(ActionEvent event) {
+    }
+
     /**
      * Initializes the controller class.
      */
@@ -162,6 +184,15 @@ public class MainController implements Initializable {
 
     private void initTables() {
         machineHelpper = new MachineHelpper(machineTable);
+    }
+
+    private void showDialog(String message) throws IOException {
+        final FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Fenetre1.fxml"));
+        final Parent root = loader.load();
+        final Scene scene = new Scene(root, 300, 250);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

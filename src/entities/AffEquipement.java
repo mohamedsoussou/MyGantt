@@ -46,6 +46,10 @@ public class AffEquipement implements Serializable {
     public String getNomEquipement() {
         return new SimpleStringProperty(getEquipement() == null ? "" : getEquipement().getNom() + "").get();
     }
+    
+    public String getNomOperation() {
+        return new SimpleStringProperty(getEquipement()== null || getEquipement().getOperation()==null ? "" : getEquipement().getOperation().getNom()+ "").get();
+    }
 
     public String getStrDateDeb() {
         return new SimpleStringProperty(getDateDeb() == null ? "" : DateUtil.strDateDefaultPattern(getDateDeb()) + "").get();

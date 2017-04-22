@@ -53,5 +53,9 @@ public class Strings {
     public static String BTN_TITLE_SUPPRIMERCASE = "Supprimer";
     public static String BTN_ICON_SUPPRIMERCASE = "";
     public static String BTN_TOOLTIP_SUPPRIMERCASE = "Supprimer la case selectionné";
-            
+     
+    //-------------- Dialogue  ---------------------------//
+    public static String DIALOGUE_MESSAGE_TITLE = "";
+    
+    
 }

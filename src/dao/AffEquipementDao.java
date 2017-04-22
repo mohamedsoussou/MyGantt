@@ -6,6 +6,10 @@
 package dao;
 
 import entities.AffEquipement;
+import entities.Casee;
+import entities.Equipement;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
@@ -14,7 +18,23 @@ import javax.persistence.EntityManager;
  */
 public class AffEquipementDao extends AbstractFacade<AffEquipement>{
     
-   private EntityManager em;
+    private EntityManager em;
+    
+    public List<AffEquipement> findByEquipement(Equipement equipement){
+        return findByCriteres(equipement, null, null, null, null, null);
+    }
+    
+    public List<AffEquipement> findByCriteres(Equipement equipement, Casee casee, Date dateDebMax, Date dateDebMin, Date dateFinMax, Date dateFinMin){
+        String query = "select a from AffEquipement a where 1=1 ";
+        if(equipement != null){
+            query += " and a.equipement.id="+equipement.getId();
+        }
+        if(casee != null){
+            query +=" and a.casee.id="+casee.getId();
+        }
+        return em.createQuery(query).getResultList();
+    }
+    
 
     public AffEquipementDao() {
         super(AffEquipement.class);

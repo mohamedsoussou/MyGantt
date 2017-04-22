@@ -13,7 +13,8 @@ public class MachineHelpper extends AbstractFxHelper<AffEquipement> {
         titres = new AbstractFxHelperItem[]{
             new AbstractFxHelperItem("ID", "id"),
             new AbstractFxHelperItem("Numero case", "numCasee"),
-            new AbstractFxHelperItem("Nom equipement", "nomEquipement")
+            new AbstractFxHelperItem("Nom equipement", "nomEquipement"),
+            new AbstractFxHelperItem("Operation", "nomOperation")
         };
     }
 
