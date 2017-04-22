@@ -76,6 +76,17 @@ public class MainController implements Initializable {
     private JFXDatePicker timePicker;
     @FXML
     private Button btnEnregistrer;
+    @FXML
+    private ComboBox<?> comboQualite;
+    @FXML
+    private TextField txtQuantite;
+    @FXML
+    private JFXDatePicker datePickerStock;
+    @FXML
+    private JFXDatePicker timePickerStock;
+    @FXML
+    private Button btnEnregistrerStock;
+           
 
     private List<AffEquipement> affEquipements;
 
@@ -132,6 +143,11 @@ public class MainController implements Initializable {
     @FXML
     private void onClickBtnGanttMachine(ActionEvent event) {
     }
+    
+    @FXML
+    private void onClickBtnEnregistrerStock(ActionEvent event) {
+    }
+    
 
     /**
      * Initializes the controller class.
