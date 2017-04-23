@@ -43,7 +43,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import util.DateUtil;
-import util.StringsFr;
+import util.Strings;
 
 /**
  * FXML Controller class
@@ -127,7 +127,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void onClickAjouterCase(ActionEvent event) throws IOException {
-        showDialog(StringsFr.DIALOGUE_MESSAGE_CREATION_TITLE);
+        showDialog(Strings.getInstance().getDIALOGUE_MESSAGE_CREATION_TITLE());
     }
 
     @FXML
@@ -155,7 +155,7 @@ public class MainController implements Initializable {
     private void onClickModifierExploitation(ActionEvent event) throws IOException {
         selectedExploitation = injectExploitationAttributes();
         if (selectedExploitation != null) {
-            showDialog(StringsFr.DIALOGUE_MESSAGE_MODIFICATION_TITLE);
+            showDialog(Strings.getInstance().getDIALOGUE_MESSAGE_MODIFICATION_TITLE());
         }
     }
 
@@ -208,16 +208,16 @@ public class MainController implements Initializable {
     }
 
     private void initAllButtons() {
-        initButton(StringsFr.BTN_ICON_ACTUALISERCASE, StringsFr.BTN_TOOLTIP_ACTUALISERCASE, btnActualiserCase);
-        initButton(StringsFr.BTN_ICON_ACTUALISERMACHINE, StringsFr.BTN_TOOLTIP_ACTUALISERMACHINE, btnActualiserMachine);
-        initButton(StringsFr.BTN_ICON_AFFICHGRAPH, StringsFr.BTN_TOOLTIP_AFFICHGRAPH, btnAffichGraph);
-        initButton(StringsFr.BTN_ICON_AJOUTERCASE, StringsFr.BTN_TOOLTIP_AJOUTERCASE, btnAjouterCase);
-        initButton(StringsFr.BTN_ICON_AJOUTERPRELEVEMENT, StringsFr.BTN_TOOLTIP_AJOUTERPRELEVEMENT, btnAjouterPrelevement);
-        initButton(StringsFr.BTN_ICON_ENREGISTRER, StringsFr.BTN_TOOLTIP_ENREGISTRER, btnEnregistrerExploitation);
-        initButton(StringsFr.BTN_ICON_GANTTCASE, StringsFr.BTN_TOOLTIP_GANTTCASE, btnGanttCase);
-        initButton(StringsFr.BTN_ICON_GANTTMACHINE, StringsFr.BTN_TOOLTIP_GANTTMACHINE, btnGanttMachine);
-        initButton(StringsFr.BTN_ICON_MODIFIERCASE, StringsFr.BTN_TOOLTIP_MODIFIERCASE, btnModifierExploitation);
-        initButton(StringsFr.BTN_ICON_SUPPRIMERCASE, StringsFr.BTN_TOOLTIP_SUPPRIMERCASE, btnSupprimerCase);
+        initButton(Strings.getInstance().getBTN_ICON_ACTUALISERCASE(), Strings.getInstance().getBTN_TOOLTIP_ACTUALISERCASE(), btnActualiserCase);
+        initButton(Strings.getInstance().getBTN_ICON_ACTUALISERMACHINE(), Strings.getInstance().getBTN_TOOLTIP_ACTUALISERMACHINE(), btnActualiserMachine);
+        initButton(Strings.getInstance().getBTN_ICON_AFFICHGRAPH(), Strings.getInstance().getBTN_TOOLTIP_AFFICHGRAPH(), btnAffichGraph);
+        initButton(Strings.getInstance().getBTN_ICON_AJOUTERCASE(), Strings.getInstance().getBTN_TOOLTIP_AJOUTERCASE(), btnAjouterCase);
+        initButton(Strings.getInstance().getBTN_ICON_AJOUTERPRELEVEMENT(), Strings.getInstance().getBTN_TOOLTIP_AJOUTERPRELEVEMENT(), btnAjouterPrelevement);
+        initButton(Strings.getInstance().getBTN_ICON_ENREGISTRER(), Strings.getInstance().getBTN_TOOLTIP_ENREGISTRER(), btnEnregistrerExploitation);
+        initButton(Strings.getInstance().getBTN_ICON_GANTTCASE(), Strings.getInstance().getBTN_TOOLTIP_GANTTCASE(), btnGanttCase);
+        initButton(Strings.getInstance().getBTN_ICON_GANTTMACHINE(), Strings.getInstance().getBTN_TOOLTIP_GANTTMACHINE(), btnGanttMachine);
+        initButton(Strings.getInstance().getBTN_ICON_MODIFIERCASE(), Strings.getInstance().getBTN_TOOLTIP_MODIFIERCASE(), btnModifierExploitation);
+        initButton(Strings.getInstance().getBTN_ICON_SUPPRIMERCASE(), Strings.getInstance().getBTN_TOOLTIP_SUPPRIMERCASE(), btnSupprimerCase);
     }
 
     private void initButton(String icon, String toolTip, Button btn) {
