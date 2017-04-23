@@ -9,10 +9,14 @@ import com.jfoenix.controls.JFXDatePicker;
 import dao.AffEquipementDao;
 import dao.ExploitationDao;
 import entities.AffEquipement;
+import entities.Casee;
 import entities.Exploitation;
+import entities.Niveau;
+import helpper.ExploitationHelpper;
 import helpper.MachineHelpper;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -52,7 +56,7 @@ public class MainController implements Initializable {
     @FXML
     private Button btnModifierCase;
     @FXML
-    private TableView<?> caseTable;
+    private TableView<Exploitation> exploitationTable;
     @FXML
     private Button btnAjouterPrelevement;
     @FXML
@@ -96,9 +100,13 @@ public class MainController implements Initializable {
     @FXML
     private Button btnEnregistrerStock;
 
+    
     private List<AffEquipement> affEquipements;
 
+    
     private MachineHelpper machineHelpper;
+    private ExploitationHelpper exploitationHelpper;
+    
     private AffEquipementDao affEquipementDao = new AffEquipementDao();
     private ExploitationDao exploitationDao = new ExploitationDao();
 
@@ -122,6 +130,12 @@ public class MainController implements Initializable {
 
     @FXML
     private void onClickBtnEnregistrerExploitation(ActionEvent event) {
+        Exploitation exploitation = getExploitationAttributes();
+        int code = exploitationDao.enregistrer(exploitation);
+        if (code > 0) {
+            
+        }
+        showErrorsExploitationCreation(code);
     }
 
     @FXML
@@ -191,6 +205,8 @@ public class MainController implements Initializable {
 
     private void initTables() {
         machineHelpper = new MachineHelpper(machineTable);
+        exploitationHelpper = new ExploitationHelpper(exploitationTable);
+        
     }
 
     private void showDialog(String message) throws IOException {
@@ -201,10 +217,15 @@ public class MainController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
-//    private Exploitation getAttributesExploitation(){
-//        Exploitation exploitation = new Exploitation();
-//    }
+
+    private Exploitation getExploitationAttributes() {
+        Exploitation exploitation = new Exploitation();
+        exploitation.setCasee((Casee) comboCasee.getSelectionModel().getSelectedItem());
+        exploitation.setNiveauBut((Niveau) comboNivBut.getSelectionModel().getSelectedItem());
+        exploitation.setIndicePriorite(Integer.parseInt(textIndice.getText()));
+        exploitation.setDateDebut(new Date(datePicker.getValue().getYear(), datePicker.getValue().getMonthValue(), datePicker.getValue().getDayOfMonth(), timePicker.getTime().getHour(), timePicker.getTime().getMinute()));
+        return exploitation;
+    }
 
     private void showErrorsExploitationCreation(int code) {
         switch (code) {
@@ -217,6 +238,8 @@ public class MainController implements Initializable {
             case -4:
                 break;
             case -5:
+                break;
+            case 1:
                 break;
             default:;
         }

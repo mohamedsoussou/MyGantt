@@ -27,6 +27,7 @@
                         <Image url="@../ressources/images/home-blue.png" />
                      </image>
                   </ImageView>
+                  
                </graphic>
                <content>
                   <Pane prefHeight="200.0" prefWidth="200.0">
@@ -85,7 +86,7 @@
                               </AnchorPane>
                            </top>
                            <center>
-                              <TableView fx:id="caseTable" prefHeight="502.0" prefWidth="834.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="exploitationTable" prefHeight="502.0" prefWidth="834.0" BorderPane.alignment="CENTER">
                                  <BorderPane.margin>
                                     <Insets />
                                  </BorderPane.margin>
