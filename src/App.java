@@ -5,7 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import util.Strings;
+import util.StringsFr;
+import static javafx.application.Application.launch;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -38,14 +39,14 @@ public class App extends Application {
     }
 
     private void initializeStrings(FXMLLoader fxmlLoader) {
-        fxmlLoader.getNamespace().put("actualiserCase", Strings.BTN_TITLE_ACTUALISERCASE);
-        fxmlLoader.getNamespace().put("ajouterCase", Strings.BTN_TITLE_AJOUTERCASE);
-        fxmlLoader.getNamespace().put("ganttCase", Strings.BTN_TITLE_GANTTCASE);
-        fxmlLoader.getNamespace().put("supprimerCase", Strings.BTN_TITLE_SUPPRIMERCASE);
-        fxmlLoader.getNamespace().put("modifierCase", Strings.BTN_TITLE_MODIFIERCASE);
-        fxmlLoader.getNamespace().put("affichGraph", Strings.BTN_TITLE_AFFICHGRAPH);
-        fxmlLoader.getNamespace().put("actualiserMachine", Strings.BTN_TITLE_ACTUALISERMACHINE);
-        fxmlLoader.getNamespace().put("ganttMachine", Strings.BTN_TITLE_GANTTMACHINE);
-        fxmlLoader.getNamespace().put("ajouterPrelevement", Strings.BTN_TITLE_AJOUTERPRELEVEMENT);
+        fxmlLoader.getNamespace().put("actualiserCase", StringsFr.BTN_TITLE_ACTUALISERCASE);
+        fxmlLoader.getNamespace().put("ajouterCase", StringsFr.BTN_TITLE_AJOUTERCASE);
+        fxmlLoader.getNamespace().put("ganttCase", StringsFr.BTN_TITLE_GANTTCASE);
+        fxmlLoader.getNamespace().put("supprimerCase", StringsFr.BTN_TITLE_SUPPRIMERCASE);
+        fxmlLoader.getNamespace().put("modifierCase", StringsFr.BTN_TITLE_MODIFIERCASE);
+        fxmlLoader.getNamespace().put("affichGraph", StringsFr.BTN_TITLE_AFFICHGRAPH);
+        fxmlLoader.getNamespace().put("actualiserMachine", StringsFr.BTN_TITLE_ACTUALISERMACHINE);
+        fxmlLoader.getNamespace().put("ganttMachine", StringsFr.BTN_TITLE_GANTTMACHINE);
+        fxmlLoader.getNamespace().put("ajouterPrelevement", StringsFr.BTN_TITLE_AJOUTERPRELEVEMENT);
     }
 }

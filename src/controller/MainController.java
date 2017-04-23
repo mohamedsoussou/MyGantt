@@ -8,17 +8,23 @@ package controller;
 import com.jfoenix.controls.JFXDatePicker;
 import dao.AffEquipementDao;
 import dao.ExploitationDao;
+import dao.NiveauDao;
+import dao.TrancheDao;
 import entities.AffEquipement;
 import entities.Casee;
 import entities.Exploitation;
 import entities.Niveau;
+import entities.Tranche;
 import helpper.ExploitationHelpper;
 import helpper.MachineHelpper;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +42,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import util.Strings;
+import util.DateUtil;
+import util.StringsFr;
 
 /**
  * FXML Controller class
@@ -54,7 +61,7 @@ public class MainController implements Initializable {
     @FXML
     private Button btnSupprimerCase;
     @FXML
-    private Button btnModifierCase;
+    private Button btnModifierExploitation;
     @FXML
     private TableView<Exploitation> exploitationTable;
     @FXML
@@ -76,11 +83,11 @@ public class MainController implements Initializable {
     @FXML
     private TableView<AffEquipement> machineTable = new TableView<>();
     @FXML
-    private ComboBox<?> comboTranche;
+    private ComboBox<Tranche> comboTranche;
     @FXML
-    private ComboBox<?> comboCasee;
+    private ComboBox<Casee> comboCasee;
     @FXML
-    private ComboBox<?> comboNivBut;
+    private ComboBox<Niveau> comboNivBut;
     @FXML
     private TextField textIndice;
     @FXML
@@ -100,24 +107,27 @@ public class MainController implements Initializable {
     @FXML
     private Button btnEnregistrerStock;
 
-    
     private List<AffEquipement> affEquipements;
+    private List<Niveau> niveaus;
+    private List<Tranche> tranches;
 
-    
+    private Exploitation selectedExploitation;
+
     private MachineHelpper machineHelpper;
     private ExploitationHelpper exploitationHelpper;
-    
+
     private AffEquipementDao affEquipementDao = new AffEquipementDao();
     private ExploitationDao exploitationDao = new ExploitationDao();
+    private NiveauDao niveauDao = new NiveauDao();
+    private TrancheDao trancheDao = new TrancheDao();
 
     @FXML
     private void onClickActualiserCase(ActionEvent event) {
-
     }
 
     @FXML
     private void onClickAjouterCase(ActionEvent event) throws IOException {
-        showDialog(Strings.DIALOGUE_MESSAGE_TITLE);
+        showDialog(StringsFr.DIALOGUE_MESSAGE_CREATION_TITLE);
     }
 
     @FXML
@@ -125,21 +135,28 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void onClickSupprimerCase(ActionEvent event) {
+    private void onClickSupprimerExploitation(ActionEvent event) {
+        int code=exploitationDao.supprimer(selectedExploitation);
+        showErrorsExploitationDrop(code);
     }
 
     @FXML
     private void onClickBtnEnregistrerExploitation(ActionEvent event) {
-        Exploitation exploitation = getExploitationAttributes();
-        int code = exploitationDao.enregistrer(exploitation);
+        selectedExploitation = getExploitationAttributes();
+        int code = exploitationDao.enregistrer(selectedExploitation);
         if (code > 0) {
-            
+            exploitationHelpper.create(selectedExploitation);
+            selectedExploitation = null;
         }
         showErrorsExploitationCreation(code);
     }
 
     @FXML
-    private void onClickModifierCase(ActionEvent event) {
+    private void onClickModifierExploitation(ActionEvent event) throws IOException {
+        selectedExploitation = injectExploitationAttributes();
+        if (selectedExploitation != null) {
+            showDialog(StringsFr.DIALOGUE_MESSAGE_MODIFICATION_TITLE);
+        }
     }
 
     @FXML
@@ -148,6 +165,11 @@ public class MainController implements Initializable {
 
     @FXML
     private void onClickBtnAffichGraph(ActionEvent event) {
+    }
+
+    @FXML
+    private void onSelectComboTranche(ActionEvent event) {
+        comboCasee.setItems(FXCollections.observableArrayList(((Tranche) comboTranche.getSelectionModel().getSelectedItem()).getCasee()));
     }
 
     @FXML
@@ -186,16 +208,16 @@ public class MainController implements Initializable {
     }
 
     private void initAllButtons() {
-        initButton(Strings.BTN_ICON_ACTUALISERCASE, Strings.BTN_TOOLTIP_ACTUALISERCASE, btnActualiserCase);
-        initButton(Strings.BTN_ICON_ACTUALISERMACHINE, Strings.BTN_TOOLTIP_ACTUALISERMACHINE, btnActualiserMachine);
-        initButton(Strings.BTN_ICON_AFFICHGRAPH, Strings.BTN_TOOLTIP_AFFICHGRAPH, btnAffichGraph);
-        initButton(Strings.BTN_ICON_AJOUTERCASE, Strings.BTN_TOOLTIP_AJOUTERCASE, btnAjouterCase);
-        initButton(Strings.BTN_ICON_AJOUTERPRELEVEMENT, Strings.BTN_TOOLTIP_AJOUTERPRELEVEMENT, btnAjouterPrelevement);
-        initButton(Strings.BTN_ICON_ENREGISTRER, Strings.BTN_TOOLTIP_ENREGISTRER, btnEnregistrerExploitation);
-        initButton(Strings.BTN_ICON_GANTTCASE, Strings.BTN_TOOLTIP_GANTTCASE, btnGanttCase);
-        initButton(Strings.BTN_ICON_GANTTMACHINE, Strings.BTN_TOOLTIP_GANTTMACHINE, btnGanttMachine);
-        initButton(Strings.BTN_ICON_MODIFIERCASE, Strings.BTN_TOOLTIP_MODIFIERCASE, btnModifierCase);
-        initButton(Strings.BTN_ICON_SUPPRIMERCASE, Strings.BTN_TOOLTIP_SUPPRIMERCASE, btnSupprimerCase);
+        initButton(StringsFr.BTN_ICON_ACTUALISERCASE, StringsFr.BTN_TOOLTIP_ACTUALISERCASE, btnActualiserCase);
+        initButton(StringsFr.BTN_ICON_ACTUALISERMACHINE, StringsFr.BTN_TOOLTIP_ACTUALISERMACHINE, btnActualiserMachine);
+        initButton(StringsFr.BTN_ICON_AFFICHGRAPH, StringsFr.BTN_TOOLTIP_AFFICHGRAPH, btnAffichGraph);
+        initButton(StringsFr.BTN_ICON_AJOUTERCASE, StringsFr.BTN_TOOLTIP_AJOUTERCASE, btnAjouterCase);
+        initButton(StringsFr.BTN_ICON_AJOUTERPRELEVEMENT, StringsFr.BTN_TOOLTIP_AJOUTERPRELEVEMENT, btnAjouterPrelevement);
+        initButton(StringsFr.BTN_ICON_ENREGISTRER, StringsFr.BTN_TOOLTIP_ENREGISTRER, btnEnregistrerExploitation);
+        initButton(StringsFr.BTN_ICON_GANTTCASE, StringsFr.BTN_TOOLTIP_GANTTCASE, btnGanttCase);
+        initButton(StringsFr.BTN_ICON_GANTTMACHINE, StringsFr.BTN_TOOLTIP_GANTTMACHINE, btnGanttMachine);
+        initButton(StringsFr.BTN_ICON_MODIFIERCASE, StringsFr.BTN_TOOLTIP_MODIFIERCASE, btnModifierExploitation);
+        initButton(StringsFr.BTN_ICON_SUPPRIMERCASE, StringsFr.BTN_TOOLTIP_SUPPRIMERCASE, btnSupprimerCase);
     }
 
     private void initButton(String icon, String toolTip, Button btn) {
@@ -203,10 +225,16 @@ public class MainController implements Initializable {
         btn.setTooltip(new Tooltip(toolTip));
     }
 
+    private void initAllComboBox() {
+        niveaus = niveauDao.findAll();
+        comboNivBut.setItems(FXCollections.observableArrayList(niveaus));
+        tranches = trancheDao.findAll();
+        comboTranche.setItems(FXCollections.observableArrayList(tranches));
+    }
+
     private void initTables() {
         machineHelpper = new MachineHelpper(machineTable);
         exploitationHelpper = new ExploitationHelpper(exploitationTable);
-        
     }
 
     private void showDialog(String message) throws IOException {
@@ -227,6 +255,19 @@ public class MainController implements Initializable {
         return exploitation;
     }
 
+    private Exploitation injectExploitationAttributes() {
+        Exploitation exploitation = exploitationHelpper.getSelected();
+        if (exploitation == null) {
+            comboCasee.getSelectionModel().select(exploitation.getCasee());
+            comboTranche.getSelectionModel().select(exploitation.getCasee().getTranche());
+            comboNivBut.getSelectionModel().select(exploitation.getNiveauBut());
+            textIndice.setText(exploitation.getIndicePriorite() + "");
+            DateUtil.javaUtilToFxDate(datePicker, exploitation.getDateDebut());
+            DateUtil.javaUtilToFxTime(timePicker, exploitation.getDateDebut());
+        }
+        return exploitation;
+    }
+
     private void showErrorsExploitationCreation(int code) {
         switch (code) {
             case -1:
@@ -238,6 +279,16 @@ public class MainController implements Initializable {
             case -4:
                 break;
             case -5:
+                break;
+            case 1:
+                break;
+            default:;
+        }
+    }
+    
+    private void showErrorsExploitationDrop(int code) {
+        switch (code) {
+            case -1:
                 break;
             case 1:
                 break;

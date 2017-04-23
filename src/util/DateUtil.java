@@ -4,9 +4,13 @@ package util;
  *
  * @author Aimad.JAOUHAR
  */
+import com.jfoenix.controls.JFXDatePicker;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Month;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -42,5 +46,12 @@ public class DateUtil {
         } catch (ParseException e) {
         }
         return null;
+    }
+    
+    public static void javaUtilToFxDate(JFXDatePicker datePicker, Date date){
+        datePicker.setValue(LocalDate.of(date.getYear(), date.getMonth(), date.getDate()));
+    }
+    public static void javaUtilToFxTime(JFXDatePicker timePicker, Date date){
+        timePicker.setTime(LocalTime.of(date.getHours(), date.getMinutes()));
     }
 }
