@@ -40,7 +40,7 @@
             <ComboBox fx:id="comboCasee" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <ComboBox fx:id="comboNivBut" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <TextField fx:id="textIndice" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="btnEnregistrer" mnemonicParsing="false" text="Enregistrer" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Button fx:id="btnEnregistrerExploitation" mnemonicParsing="false" text="Enregistrer" GridPane.columnIndex="2" GridPane.rowIndex="7" onAction="#onClickBtnEnregistrerExploitation" />
             <JFXDatePicker fx:id="datePicker" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <JFXDatePicker fx:id="timePicker" showTime="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
          </children>

@@ -7,7 +7,9 @@ package controller;
 
 import com.jfoenix.controls.JFXDatePicker;
 import dao.AffEquipementDao;
+import dao.ExploitationDao;
 import entities.AffEquipement;
+import entities.Exploitation;
 import helpper.MachineHelpper;
 import java.io.IOException;
 import java.net.URL;
@@ -82,7 +84,7 @@ public class MainController implements Initializable {
     @FXML
     private JFXDatePicker timePicker;
     @FXML
-    private Button btnEnregistrer;
+    private Button btnEnregistrerExploitation;
     @FXML
     private ComboBox<?> comboQualite;
     @FXML
@@ -98,6 +100,7 @@ public class MainController implements Initializable {
 
     private MachineHelpper machineHelpper;
     private AffEquipementDao affEquipementDao = new AffEquipementDao();
+    private ExploitationDao exploitationDao = new ExploitationDao();
 
     @FXML
     private void onClickActualiserCase(ActionEvent event) {
@@ -115,6 +118,10 @@ public class MainController implements Initializable {
 
     @FXML
     private void onClickSupprimerCase(ActionEvent event) {
+    }
+
+    @FXML
+    private void onClickBtnEnregistrerExploitation(ActionEvent event) {
     }
 
     @FXML
@@ -170,7 +177,7 @@ public class MainController implements Initializable {
         initButton(Strings.BTN_ICON_AFFICHGRAPH, Strings.BTN_TOOLTIP_AFFICHGRAPH, btnAffichGraph);
         initButton(Strings.BTN_ICON_AJOUTERCASE, Strings.BTN_TOOLTIP_AJOUTERCASE, btnAjouterCase);
         initButton(Strings.BTN_ICON_AJOUTERPRELEVEMENT, Strings.BTN_TOOLTIP_AJOUTERPRELEVEMENT, btnAjouterPrelevement);
-        initButton(Strings.BTN_ICON_ENREGISTRER, Strings.BTN_TOOLTIP_ENREGISTRER, btnEnregistrer);
+        initButton(Strings.BTN_ICON_ENREGISTRER, Strings.BTN_TOOLTIP_ENREGISTRER, btnEnregistrerExploitation);
         initButton(Strings.BTN_ICON_GANTTCASE, Strings.BTN_TOOLTIP_GANTTCASE, btnGanttCase);
         initButton(Strings.BTN_ICON_GANTTMACHINE, Strings.BTN_TOOLTIP_GANTTMACHINE, btnGanttMachine);
         initButton(Strings.BTN_ICON_MODIFIERCASE, Strings.BTN_TOOLTIP_MODIFIERCASE, btnModifierCase);
@@ -193,6 +200,26 @@ public class MainController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
+    }
+    
+//    private Exploitation getAttributesExploitation(){
+//        Exploitation exploitation = new Exploitation();
+//    }
+
+    private void showErrorsExploitationCreation(int code) {
+        switch (code) {
+            case -1:
+                break;
+            case -2:
+                break;
+            case -3:
+                break;
+            case -4:
+                break;
+            case -5:
+                break;
+            default:;
+        }
     }
 
 }
