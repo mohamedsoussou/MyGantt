@@ -150,11 +150,12 @@ public class MainController implements Initializable {
     @FXML
     private void onClickBtnGanttMachine(ActionEvent event) {
     }
-
+    
     @FXML
     private void onClickBtnEnregistrerStock(ActionEvent event) {
     }
-
+    
+    
     /**
      * Initializes the controller class.
      */
